@@ -73,7 +73,7 @@ public class TournamentService {
 
     public void removeTournament(Long id, User user) {
         Tournament tournament = getTournamentById(id);
-        if (tournament.getUser().getId() != user.getId()) {
+        if (!tournament.getUser().getId().equals(user.getId())) {
             throw new TournamentOwnershipException(id, user.getId());
         }
         tournamentRepository.delete(tournament);
